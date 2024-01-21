@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Builder;
-//değişiklik yapıldı
 namespace Core.CrossCuttingConcerns.Exceptions;
 
 public static class ApplicationBuilderGlobalExceptionHandlingExtensions
