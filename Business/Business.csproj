@@ -17,4 +17,13 @@
     <ProjectReference Include="..\Entities\Entities.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Dtos\Car\" />
+    <Folder Include="Dtos\Fuel\" />
+    <Folder Include="Dtos\Model\" />
+    <Folder Include="Dtos\Tranmission\" />
+    <Folder Include="Requests\Car\" />
+    <Folder Include="Requests\Model\" />
+  </ItemGroup>
+
 </Project>
