@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Business.Responses.Model
 {
-    public class AddModelResponse
+    public class UpdateModelResponse
     {
         public int Id { get; set; }
         public int BrandId { get; set; }
@@ -15,6 +15,6 @@ namespace Business.Responses.Model
         public string Name { get; set; }
         public short Year { get; set; }
         public decimal DailyPrice { get; set; }
-        public DateTime CreatedAt { get; set; }
+        public DateTime UpdatedAt { get; set; }
     }
 }

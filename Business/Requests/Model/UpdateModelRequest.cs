@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Business.Responses.Model
+﻿namespace Business.Requests.Model
 {
-    public class AddModelResponse
+    public class UpdateModelRequest
     {
         public int Id { get; set; }
         public int BrandId { get; set; }
@@ -15,6 +9,5 @@ namespace Business.Responses.Model
         public string Name { get; set; }
         public short Year { get; set; }
         public decimal DailyPrice { get; set; }
-        public DateTime CreatedAt { get; set; }
     }
 }

@@ -9,31 +9,58 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Concrete.EntityFramework
 {
-    internal class EfModelDal : IModelDal
+    internal class EfModelDal : ITransmissionDal
     {
-        void IEntityRepository<Model, int>.Add(Model entity)
+        public Model Add(Model entity)
         {
             throw new NotImplementedException();
         }
 
-        void IEntityRepository<Model, int>.Delete(Model entity)
+        public Transmission Add(Transmission entity)
         {
             throw new NotImplementedException();
         }
 
-        Model? IEntityRepository<Model, int>.GetById(int id)
+        public Model Delete(Model entity)
         {
             throw new NotImplementedException();
         }
 
-        IList<Model> IEntityRepository<Model, int>.GetList()
+        public Transmission Delete(Transmission entity)
         {
             throw new NotImplementedException();
         }
 
-        void IEntityRepository<Model, int>.Update(Model entity)
+        public Model? Get(Func<Model, bool> predicate)
         {
             throw new NotImplementedException();
         }
+
+        public Transmission? Get(Func<Transmission, bool> predicate)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IList<Model> GetList(Func<Model, bool>? predicate = null)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IList<Transmission> GetList(Func<Transmission, bool>? predicate = null)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Model Update(Model entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Transmission Update(Transmission entity)
+        {
+            throw new NotImplementedException();
+        }
+
+     
     }
 }

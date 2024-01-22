@@ -1,4 +1,5 @@
-﻿using DataAccess.Abstract;
+﻿using Core.DataAccess;
+using DataAccess.Abstract;
 using Entities.Concrete;
 using System;
 using System.Collections.Generic;
@@ -20,6 +21,11 @@ namespace DataAccess.Concrete.EntityFramework
             throw new NotImplementedException();
         }
 
+        public Car? Get(Func<Car, bool> predicate)
+        {
+            throw new NotImplementedException();
+        }
+
         public Car? GetById(int id)
         {
             throw new NotImplementedException();
@@ -30,7 +36,27 @@ namespace DataAccess.Concrete.EntityFramework
             throw new NotImplementedException();
         }
 
+        public IList<Car> GetList(Func<Car, bool>? predicate = null)
+        {
+            throw new NotImplementedException();
+        }
+
         public void Update(Car entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        Car IEntityRepository<Car, int>.Add(Car entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        Car IEntityRepository<Car, int>.Delete(Car entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        Car IEntityRepository<Car, int>.Update(Car entity)
         {
             throw new NotImplementedException();
         }
