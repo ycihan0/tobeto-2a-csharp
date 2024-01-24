@@ -21,6 +21,11 @@ namespace DataAccess.Concrete.EntityFramework
             throw new NotImplementedException();
         }
 
+        public Car Delete(Car entity, bool isSoftDelete = true)
+        {
+            throw new NotImplementedException();
+        }
+
         public Car? Get(Func<Car, bool> predicate)
         {
             throw new NotImplementedException();

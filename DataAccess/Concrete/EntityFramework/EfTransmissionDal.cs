@@ -21,6 +21,11 @@ namespace DataAccess.Concrete.EntityFramework
             throw new NotImplementedException();
         }
 
+        public Transmission Delete(Transmission entity, bool isSoftDelete = true)
+        {
+            throw new NotImplementedException();
+        }
+
         public Transmission? Get(Func<Transmission, bool> predicate)
         {
             throw new NotImplementedException();
