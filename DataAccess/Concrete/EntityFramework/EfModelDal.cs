@@ -1,5 +1,6 @@
 ﻿using Core.DataAccess;
 using DataAccess.Abstract;
+using DataAccess.Concrete.EntityFramework.Contexts;
 using Entities.Concrete;
 using System;
 using System.Collections.Generic;
@@ -7,65 +8,63 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace DataAccess.Concrete.EntityFramework
 {
-    internal class EfModelDal : ITransmissionDal
+  
+    public class EfModelDal : IModelDal
     {
+        private readonly RentACarContext _context;
+
+        public EfModelDal(RentACarContext context)
+        {
+            _context = context;
+        }
+
         public Model Add(Model entity)
         {
-            throw new NotImplementedException();
+            entity.CreatedAt= DateTime.UtcNow;
+            _context.Models.Add(entity);
+            _context.SaveChanges();
+            return entity;
         }
 
-        public Transmission Add(Transmission entity)
+        public Model Delete(Model entity, bool isSoftDelete=true)
         {
-            throw new NotImplementedException();
+            entity.DeletedAt = DateTime.UtcNow;
+            if (!isSoftDelete)
+                _context.Models.Remove(entity);
+            _context.SaveChanges();
+            return entity;
         }
 
-        public Model Delete(Model entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Transmission Delete(Transmission entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Transmission Delete(Transmission entity, bool isSoftDelete = true)
-        {
-            throw new NotImplementedException();
-        }
-
+   
         public Model? Get(Func<Model, bool> predicate)
         {
-            throw new NotImplementedException();
+          Model? model= _context.Models.FirstOrDefault(predicate);
+            return model;
         }
 
-        public Transmission? Get(Func<Transmission, bool> predicate)
-        {
-            throw new NotImplementedException();
-        }
+   
 
         public IList<Model> GetList(Func<Model, bool>? predicate = null)
         {
-            throw new NotImplementedException();
+           IQueryable<Model> query = _context.Set<Model>();
+            if(predicate != null)
+                query=query.Where(predicate).AsQueryable();
+            return query.ToList();
         }
 
-        public IList<Transmission> GetList(Func<Transmission, bool>? predicate = null)
-        {
-            throw new NotImplementedException();
-        }
-
+ 
         public Model Update(Model entity)
         {
-            throw new NotImplementedException();
+            entity.UpdateAt = DateTime.UtcNow;
+          _context.Models.Update(entity);
+            _context.SaveChanges();
+            return entity;
         }
 
-        public Transmission Update(Transmission entity)
-        {
-            throw new NotImplementedException();
-        }
-
+  
      
     }
 }

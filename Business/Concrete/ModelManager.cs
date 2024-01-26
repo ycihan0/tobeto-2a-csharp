@@ -4,6 +4,7 @@ using Business.BusinessRules;
 using Business.Profiles.Validation.FluentValidation.Model;
 using Business.Requests.Model;
 using Business.Responses.Model;
+using Core.CrossCuttingConcerns.Validation.FluentValidation;
 using DataAccess.Abstract;
 using Entities.Concrete;
 using FluentValidation;
@@ -47,7 +48,7 @@ namespace Business.Concrete
                 throw new Exception("Daily price must be greater than 0.");
             //TODO: bunlari fluent validation ile buradan ayrıştır.
 
-            ValidationTool.Validate(new AddModelRequestValidator(), request);
+            ValdationTool.Validate(new AddModelRequestValidator(), request);
             // business rules
             _modelBusinessRules.CheckIfModelNameExists(request.Name);
             _modelBusinessRules.CheckIfModelYearShouldBeInLast20Years(request.Year);

@@ -11,12 +11,7 @@ namespace DataAccess.Concrete.EntityFramework
 {
     internal class EfCarDal : ICarDal
     {
-        public void Add(Car entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Delete(Car entity)
+        public Car Add(Car entity)
         {
             throw new NotImplementedException();
         }
@@ -31,37 +26,12 @@ namespace DataAccess.Concrete.EntityFramework
             throw new NotImplementedException();
         }
 
-        public Car? GetById(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IList<Car> GetList()
-        {
-            throw new NotImplementedException();
-        }
-
         public IList<Car> GetList(Func<Car, bool>? predicate = null)
         {
             throw new NotImplementedException();
         }
 
-        public void Update(Car entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        Car IEntityRepository<Car, int>.Add(Car entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        Car IEntityRepository<Car, int>.Delete(Car entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        Car IEntityRepository<Car, int>.Update(Car entity)
+        public Car Update(Car entity)
         {
             throw new NotImplementedException();
         }

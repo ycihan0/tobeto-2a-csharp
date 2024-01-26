@@ -33,8 +33,8 @@ namespace Business.BusinessRules
 
         public void CheckIfModelYearShouldBeInLast20Years(short year)
         {
-            if (year<DateTime.UtcNow.AddYears(-20).Year)
-                throw new BusinessException("Model year should be in last 20 years.")
+            if (year < DateTime.UtcNow.AddYears(-20).Year)
+                throw new BusinessException("Model year should be in last 20 years.");
         }
     }
 }
