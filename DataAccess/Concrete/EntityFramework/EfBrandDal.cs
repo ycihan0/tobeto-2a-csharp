@@ -3,7 +3,7 @@ using Entities.Concrete;
 
 namespace DataAccess.Concrete.EntityFramework;
 
-internal class EfBrandDal : IBrandDal
+public class EfBrandDal : IBrandDal
 {
     public Brand Add(Brand entity)
     {
