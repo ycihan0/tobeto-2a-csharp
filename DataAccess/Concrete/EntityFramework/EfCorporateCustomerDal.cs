@@ -1,4 +1,6 @@
-﻿using DataAccess.Abstract;
+﻿using Core.DataAccess.EntityFramework;
+using DataAccess.Abstract;
+using DataAccess.Concrete.EntityFramework.Contexts;
 using Entities.Concrete;
 using System;
 using System.Collections.Generic;
@@ -8,31 +10,10 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Concrete.EntityFramework
 {
-    public class EfCorporateCustomerDal : ICorporateCustomer
+    public class EfCorporateCustomerDal : EfEntityRepositoryBase<CorporateCustomer, int, RentACarContext>, ICorporateCustomer
     {
-        public CorporateCustomer Add(CorporateCustomer entity)
+        public EfCorporateCustomerDal(RentACarContext context) : base(context)
         {
-            throw new NotImplementedException();
-        }
-
-        public CorporateCustomer Delete(CorporateCustomer entity, bool isSoftDelete = true)
-        {
-            throw new NotImplementedException();
-        }
-
-        public CorporateCustomer? Get(Func<CorporateCustomer, bool> predicate)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IList<CorporateCustomer> GetList(Func<CorporateCustomer, bool>? predicate = null)
-        {
-            throw new NotImplementedException();
-        }
-
-        public CorporateCustomer Update(CorporateCustomer entity)
-        {
-            throw new NotImplementedException();
         }
     }
 }

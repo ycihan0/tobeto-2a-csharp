@@ -20,15 +20,19 @@ public static class ServiceCollectionBusinessExtension
     public static IServiceCollection AddBusinessServices(this IServiceCollection services, IConfiguration configuration)
     {
         services
-            .AddSingleton<IBrandService, BrandManager>()
-            .AddSingleton<IBrandDal, InMemoryBrandDal>()
-            .AddSingleton<BrandBusinessRules>(); // Fluent
-                                                 // Singleton: Tek bir nesne oluşturur ve herkese onu verir.
-                                                 // Ek ödev diğer yöntemleri araştırınız.
+            .AddScoped<IBrandService, BrandManager>()
+            .AddScoped<IBrandDal, EfBrandDal>()
+            .AddScoped<BrandBusinessRules>(); // Fluent
+                                              // Singleton: Tek bir nesne oluşturur ve herkese onu verir.
+                                              // Ek ödev diğer yöntemleri araştırınız.
         services
-           .AddSingleton<IModelService, ModelManager>()
-           .AddScoped<IModelDal, EfModelDal>()
-            .AddSingleton<ModelBusinessRules>(); // Fluent
+                   .AddScoped<IModelService, ModelManager>()
+                   .AddScoped<IModelDal, EfModelDal>()
+                   .AddScoped<ModelBusinessRules>(); // Fluent
+        services
+           .AddScoped<ICarService, CarManager>()
+           .AddScoped<ICarDal, EfCarDal>()
+           .AddScoped<CarBusinessRules>(); // Fluent
 
         services.AddAutoMapper(Assembly.GetExecutingAssembly()); // AutoMapper.Extensions.Microsoft.DependencyInjection NuGet Paketi
         // Reflection yöntemiyle Profile class'ını kalıtım alan tüm class'ları bulur ve AutoMapper'a ekler.

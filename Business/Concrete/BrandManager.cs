@@ -10,7 +10,8 @@ namespace Business.Concrete;
 
 public class BrandManager : IBrandService
 {
-    private readonly IBrandDal _brandDal;
+    private readonly IBrandDal _brandDal; // Bir entity service'i kendi entitysi dışında hiç bir entity'nin DAL'ını injekte etmemelidir.
+    // private readonly IModelDal _modelDal;
     private readonly BrandBusinessRules _brandBusinessRules;
     private readonly IMapper _mapper;
 
@@ -25,8 +26,8 @@ public class BrandManager : IBrandService
     {
         // İş Kuralları
         _brandBusinessRules.CheckIfBrandNameNotExists(request.Name);
+        // Authentication-Authorization
         // Validation
-        // Yetki kontrolü
         // Cache
         // Transaction
         //Brand brandToAdd = new(request.Name)
@@ -38,6 +39,11 @@ public class BrandManager : IBrandService
         return response;
     }
 
+    public Brand? GetById(int id)
+    {
+        return _brandDal.Get(i => i.Id == id);
+    }
+
     public GetBrandListResponse GetList(GetBrandListRequest request)
     {
         // İş Kuralları
@@ -47,7 +53,7 @@ public class BrandManager : IBrandService
         // Transaction
 
         IList<Brand> brandList = _brandDal.GetList();
-    
+
         // brandList.Items diye bir alan yok, bu yüzden mapping konfigurasyonu yapmamız gerekiyor.
 
         // Brand -> BrandListItemDto
@@ -56,4 +62,5 @@ public class BrandManager : IBrandService
         GetBrandListResponse response = _mapper.Map<GetBrandListResponse>(brandList); // Mapping
         return response;
     }
+}
 }

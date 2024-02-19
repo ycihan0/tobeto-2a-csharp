@@ -1,4 +1,5 @@
-﻿using Core.CrossCuttingConcerns.Exceptions;
+﻿using Business.Abstract;
+using Core.CrossCuttingConcerns.Exceptions;
 using DataAccess.Abstract;
 using Entities.Concrete;
 using System;
@@ -12,10 +13,12 @@ namespace Business.BusinessRules
     public class ModelBusinessRules
     {
         private readonly IModelDal _modelDal;
+        private readonly IBrandService _brandService;
 
-        public ModelBusinessRules(IModelDal modelDal)
+        public ModelBusinessRules(IModelDal modelDal, IBrandService brandService)
         {
             _modelDal = modelDal;
+            _brandService = brandService;
         }
 
         public void CheckIfModelNameExists(string name)
@@ -23,6 +26,14 @@ namespace Business.BusinessRules
             bool isNameExists = _modelDal.Get(m => m.Name == name) != null;
             if (isNameExists)
                 throw new BusinessException("Model name already exists.");
+        }
+
+        public void CheckIfBrandExists(int brandId)
+        {
+
+            Brand? brand = _brandService.GetById(brandId);
+            if (brand is null)
+                throw new Exception("Böyle bir marka yok.");
         }
 
         public void CheckIfModelExists(Model? modelToDelete)
