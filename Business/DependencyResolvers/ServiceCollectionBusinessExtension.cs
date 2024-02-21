@@ -1,6 +1,7 @@
 ﻿using Business.Abstract;
 using Business.BusinessRules;
 using Business.Concrete;
+using Core.Utilities.Security.JWT;
 using DataAccess.Abstract;
 using DataAccess.Concrete.EntityFramework;
 using DataAccess.Concrete.EntityFramework.Contexts;
@@ -19,6 +20,7 @@ public static class ServiceCollectionBusinessExtension
     // İlk parametere genişleteceğimiz tip olmalı ve başında this keyword'ü olmalı.
     public static IServiceCollection AddBusinessServices(this IServiceCollection services, IConfiguration configuration)
     {
+        services.AddScoped<ITokenHelper, JwtTokenHelper>();
         services
             .AddScoped<IBrandService, BrandManager>()
             .AddScoped<IBrandDal, EfBrandDal>()
@@ -29,10 +31,14 @@ public static class ServiceCollectionBusinessExtension
                    .AddScoped<IModelService, ModelManager>()
                    .AddScoped<IModelDal, EfModelDal>()
                    .AddScoped<ModelBusinessRules>(); // Fluent
+                                                     //services
+                                                     //   .AddScoped<ICarService, CarManager>()
+                                                     //   .AddScoped<ICarDal, EfCarDal>()
+                                                     //   .AddScoped<CarBusinessRules>(); // Fluent
+
         services
-           .AddScoped<ICarService, CarManager>()
-           .AddScoped<ICarDal, EfCarDal>()
-           .AddScoped<CarBusinessRules>(); // Fluent
+           .AddScoped<IUserService, UserManager>()
+           .AddScoped<IUserDal, EfUserDal>();
 
         services.AddAutoMapper(Assembly.GetExecutingAssembly()); // AutoMapper.Extensions.Microsoft.DependencyInjection NuGet Paketi
         // Reflection yöntemiyle Profile class'ını kalıtım alan tüm class'ları bulur ve AutoMapper'a ekler.
